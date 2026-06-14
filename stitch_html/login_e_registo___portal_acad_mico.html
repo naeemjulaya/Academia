@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal de Excelência - Autenticação</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c2c7ce",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#99d2ff",
+                        "secondary-fixed-dim": "#94cdf9",
+                        "on-surface": "#001b3f",
+                        "secondary": "#24648a",
+                        "primary-fixed": "#cde5ff",
+                        "surface-tint": "#396285",
+                        "tertiary-fixed": "#a6eeff",
+                        "primary": "#002239",
+                        "secondary-fixed": "#cae6ff",
+                        "primary-container": "#023859",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#00242b",
+                        "background": "#f8fbfc",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#d7e3ff",
+                        "surface-variant": "#d7e3ff",
+                        "on-primary-fixed-variant": "#1e4a6c",
+                        "tertiary-fixed-dim": "#7dd3e7",
+                        "surface-container-low": "#f1f3ff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cadaff",
+                        "on-secondary-fixed-variant": "#004b6f",
+                        "primary-fixed-dim": "#a2cbf3",
+                        "tertiary-container": "#003b45",
+                        "on-tertiary-container": "#51aabd",
+                        "on-surface-variant": "#42474e",
+                        "inverse-primary": "#a2cbf3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline": "#72777e",
+                        "on-background": "#001b3f",
+                        "on-tertiary-fixed-variant": "#004e5b",
+                        "on-secondary-container": "#185b82",
+                        "surface-bright": "#f9f9ff",
+                        "inverse-surface": "#193055",
+                        "surface": "#f9f9ff",
+                        "surface-container": "#e8eeff",
+                        "on-primary-fixed": "#001d32",
+                        "on-tertiary-fixed": "#001f25",
+                        "inverse-on-surface": "#ecf0ff",
+                        "on-primary-container": "#79a2c8",
+                        "surface-container-high": "#dfe8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "2.5rem",
+                        "xl": "4rem",
+                        "md": "1.5rem",
+                        "sm": "1rem",
+                        "unit": "4px",
+                        "container-max": "1280px",
+                        "xs": "0.5rem",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Source Serif 4"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Source Serif 4"],
+                        "caption": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Source Serif 4"],
+                        "label-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Source Serif 4"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid #D8EAF0;
+        }
+        .bg-subtle-pattern {
+            background-color: #f8fbfc;
+            background-image: radial-gradient(#d8eaf0 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .auth-transition {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+        .hidden-auth {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        input:focus {
+            outline: none;
+            border-color: #54ACBF !important;
+            box-shadow: 0 0 0 2px rgba(84, 172, 191, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-subtle-pattern font-body-md text-on-surface min-h-screen flex items-center justify-center p-md">
+<!-- Container Principal -->
+<main class="w-full max-w-[1100px] grid md:grid-cols-12 glass-panel shadow-2xl rounded-xl overflow-hidden min-h-[700px]">
+<!-- Lado Esquerdo: Imagem Editorial / Branding -->
+<section class="hidden md:flex md:col-span-5 relative bg-primary-container overflow-hidden items-center justify-center p-xl">
+<div class="absolute inset-0 z-0">
+<img alt="Biblioteca Académica" class="w-full h-full object-cover opacity-40 mix-blend-overlay" data-alt="A sophisticated black and white photograph of a historic library aisle with tall wooden shelves filled with classic books. The lighting is dramatic, with soft rays of light filtering through dust motes, creating a scholarly and prestigious atmosphere. The image has a subtle blue tint to match the Deep Blue academic color palette, evoking intellectual authority and the pursuit of excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYViO37ayXiKzHkJbmHvVaap3G9Lag5-W5L8Bi6m1kQqESacLWFX6HkK_znmHULFYLciY-wSusB5QsVDEr7M266o5tSb73aPsL_-pSSYnPg8iMxwsVJ9CGqU0QGkxJsfPjQkzxXde8tL2Jq8tZAHsE-2Z4EdHsmHpfq22p11cdLGjVS3vR6XadHa2gAICa0BtMYfVMRVzcbAbBsIC8V1RNdC1M39S8XT9neN2RFp2NIyUTx6dUzw0_Ut7hAy3-uyTaa23X9nm0x3Vh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="mb-lg">
+<span class="material-symbols-outlined text-[64px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-primary mb-md">Académico</h1>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-xs mx-auto opacity-90 italic">
+                    "A busca pelo conhecimento é a única fronteira que se expande à medida que a atravessamos."
+                </p>
+<div class="mt-xl h-[1px] w-12 bg-on-tertiary-container opacity-50"></div>
+<p class="mt-md font-label-md text-label-md tracking-widest text-on-tertiary uppercase">Portal de Excelência</p>
+</div>
+</section>
+<!-- Lado Direito: Formulários -->
+<section class="md:col-span-7 bg-surface p-lg md:p-xl flex flex-col justify-center">
+<!-- Login Form -->
+<div class="auth-transition" id="login-section">
+<header class="mb-xl text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Bem-vindo de volta</h2>
+<p class="font-body-md text-on-surface-variant">Introduza as suas credenciais para aceder ao portal.</p>
+</header>
+<form class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="login-email">Email Académico</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface focus:ring-0 transition-all text-body-md" id="login-email" placeholder="exemplo@universidade.pt" type="email"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-xs">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="login-password">Palavra-passe</label>
+<a class="text-caption text-secondary hover:underline" href="#">Esqueceu-se da senha?</a>
+</div>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface focus:ring-0 transition-all text-body-md" id="login-password" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex items-center space-x-xs py-xs">
+<input class="w-4 h-4 rounded border-outline-variant text-secondary focus:ring-secondary" id="remember" type="checkbox"/>
+<label class="text-caption text-on-surface-variant" for="remember">Manter sessão iniciada</label>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-label-md text-label-md py-md rounded hover:bg-primary transition-all shadow-sm active:scale-[0.98] mt-sm" type="submit">
+                        Entrar no Portal
+                    </button>
+</form>
+<footer class="mt-xl text-center">
+<p class="text-body-md text-on-surface-variant">
+                        Não possui uma conta? 
+                        <button class="text-secondary font-semibold hover:underline" onclick="toggleAuth('signup')">Registe-se agora</button>
+</p>
+</footer>
+</div>
+<!-- Signup Form -->
+<div class="auth-transition hidden-auth" id="signup-section">
+<header class="mb-lg text-center md:text-left">
+<button class="flex items-center text-secondary mb-md group" onclick="toggleAuth('login')">
+<span class="material-symbols-outlined text-[18px] mr-1 group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-caption font-semibold">Voltar ao Login</span>
+</button>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Criar Conta Académica</h2>
+<p class="font-body-md text-on-surface-variant">Junte-se à nossa comunidade de excelência intelectual.</p>
+</header>
+<form class="space-y-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="name">Nome completo</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface text-body-md" id="name" placeholder="Nome Próprio e Apelido" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="email">Email</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface text-body-md" id="email" placeholder="email@exemplo.pt" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="phone">Telefone</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface text-body-md" id="phone" placeholder="+351 900 000 000" type="tel"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="uni">Universidade</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface text-body-md" id="uni" placeholder="Instituição de Ensino" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="course">Curso</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface text-body-md" id="course" placeholder="Licenciatura / Mestrado em..." type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="signup-password">Palavra-passe</label>
+<input class="w-full px-md py-sm border border-outline-variant rounded bg-surface text-body-md" id="signup-password" placeholder="Mínimo 8 caracteres" type="password"/>
+</div>
+<div class="flex items-start space-x-xs py-xs">
+<input class="mt-1 w-4 h-4 rounded border-outline-variant text-secondary focus:ring-secondary" id="terms" type="checkbox"/>
+<label class="text-caption text-on-surface-variant" for="terms">
+                            Li e aceito os <a class="text-secondary hover:underline" href="#">Termos de Utilização</a> e a <a class="text-secondary hover:underline" href="#">Política de Privacidade</a> institucional.
+                        </label>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-label-md text-label-md py-md rounded hover:bg-primary transition-all shadow-sm active:scale-[0.98]" type="submit">
+                        Finalizar Registo
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Rodapé Institucional Discreto -->
+<footer class="fixed bottom-gutter w-full text-center px-md pointer-events-none">
+<div class="flex items-center justify-center space-x-md text-on-surface-variant opacity-60">
+<span class="text-caption">© 2024 Portal de Excelência Académica</span>
+<span class="h-1 w-1 bg-outline rounded-full"></span>
+<span class="text-caption">Suporte Técnico</span>
+<span class="h-1 w-1 bg-outline rounded-full"></span>
+<span class="text-caption">Privacidade</span>
+</div>
+</footer>
+<script>
+        function toggleAuth(type) {
+            const loginSection = document.getElementById('login-section');
+            const signupSection = document.getElementById('signup-section');
+
+            if (type === 'signup') {
+                loginSection.classList.add('opacity-0', '-translate-y-4');
+                setTimeout(() => {
+                    loginSection.classList.add('hidden-auth');
+                    signupSection.classList.remove('hidden-auth');
+                    setTimeout(() => {
+                        signupSection.classList.remove('opacity-0', 'translate-y-10');
+                    }, 50);
+                }, 400);
+            } else {
+                signupSection.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => {
+                    signupSection.classList.add('hidden-auth');
+                    loginSection.classList.remove('hidden-auth');
+                    setTimeout(() => {
+                        loginSection.classList.remove('opacity-0', '-translate-y-4');
+                    }, 50);
+                }, 400);
+            }
+        }
+    </script>
+</body></html>

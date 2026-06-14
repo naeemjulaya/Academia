@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal do Aluno - Acadêmico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Source+Serif+4:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c2c7ce",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#99d2ff",
+                    "secondary-fixed-dim": "#94cdf9",
+                    "on-surface": "#001b3f",
+                    "secondary": "#24648a",
+                    "primary-fixed": "#cde5ff",
+                    "surface-tint": "#396285",
+                    "tertiary-fixed": "#a6eeff",
+                    "primary": "#002239",
+                    "secondary-fixed": "#cae6ff",
+                    "primary-container": "#023859",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#00242b",
+                    "background": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d7e3ff",
+                    "surface-variant": "#d7e3ff",
+                    "on-primary-fixed-variant": "#1e4a6c",
+                    "tertiary-fixed-dim": "#7dd3e7",
+                    "surface-container-low": "#f1f3ff",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#cadaff",
+                    "on-secondary-fixed-variant": "#004b6f",
+                    "primary-fixed-dim": "#a2cbf3",
+                    "tertiary-container": "#003b45",
+                    "on-tertiary-container": "#51aabd",
+                    "on-surface-variant": "#42474e",
+                    "inverse-primary": "#a2cbf3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline": "#72777e",
+                    "on-background": "#001b3f",
+                    "on-tertiary-fixed-variant": "#004e5b",
+                    "on-secondary-container": "#185b82",
+                    "surface-bright": "#f9f9ff",
+                    "inverse-surface": "#193055",
+                    "surface": "#f9f9ff",
+                    "surface-container": "#e8eeff",
+                    "on-primary-fixed": "#001d32",
+                    "on-tertiary-fixed": "#001f25",
+                    "inverse-on-surface": "#ecf0ff",
+                    "on-primary-container": "#79a2c8",
+                    "surface-container-high": "#dfe8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "2.5rem",
+                    "xl": "4rem",
+                    "md": "1.5rem",
+                    "sm": "1rem",
+                    "unit": "4px",
+                    "container-max": "1280px",
+                    "xs": "0.5rem",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Source Serif 4"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Source Serif 4"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Source Serif 4"],
+                    "label-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg-mobile": ["Source Serif 4"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c2c7ce;
+            border-radius: 10px;
+        }
+        .active-tab-indicator {
+            box-shadow: 0 8px 24px rgba(1, 28, 64, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Acadêmico</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Portal do Aluno</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined mr-sm">dashboard</span>
+<span class="font-label-md text-label-md">Painel</span>
+</a>
+<a class="flex items-center px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined mr-sm">school</span>
+<span class="font-label-md text-label-md">Disciplinas</span>
+</a>
+<!-- Active Tab: Inscrições -->
+<a class="flex items-center px-md py-sm text-primary border-l-[3px] border-primary bg-surface-container-low" href="#">
+<span class="material-symbols-outlined mr-sm">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Inscrições</span>
+</a>
+<a class="flex items-center px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined mr-sm">payments</span>
+<span class="font-label-md text-label-md">Pagamentos</span>
+</a>
+<a class="flex items-center px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined mr-sm">description</span>
+<span class="font-label-md text-label-md">Materiais</span>
+</a>
+<a class="flex items-center px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined mr-sm">chat</span>
+<span class="font-label-md text-label-md">Mensagens</span>
+</a>
+<a class="flex items-center px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined mr-sm">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-md border-t border-outline-variant">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Avatar do Usuário" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a diverse university student with a warm, confident expression. The lighting is soft and natural, emphasizing a clean and academic aesthetic. The background is a slightly blurred modern campus interior with glass and light wood textures, maintaining the brand's sophisticated and high-performance visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh5Lm3ao7ZzQDPyxLjIBGyZAtk6HdiOdE0VoLKFSSYWjhNmS9e6QS5SWxuL2xpl9flZYW6PX6dCax2j1wO-EUl27P4OJpKkQd6bM_LZ3eiUT-hKhH7W8_WYZ1IBQnyCQne2hG5lXaUVcyN3Fk2LGun1zGvlGUUXQrrodsctep9IR-mdq_97kLOwkPu1Yzb29u36FfNu8zlQMVG_PRYzkOH1UWnHYGj6Ijj7ynOmGrNXeZ-juQBQu06hPQldblPOumpQXiDePrmjguA"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">Ricardo Silva</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Engenharia de Software</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar (Authority Source: JSON) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 glass-panel border-b border-outline-variant flex justify-between items-center px-lg z-40">
+<div class="flex items-center space-x-lg">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md focus:outline-none focus:ring-1 focus:ring-secondary w-80" placeholder="Procurar em inscrições ou pagamentos..." type="text"/>
+</div>
+<nav class="hidden md:flex space-x-md">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Início</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Biblioteca</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-all" href="#">Suporte</a>
+</nav>
+</div>
+<div class="flex items-center space-x-md">
+<button class="flex items-center text-on-surface-variant hover:bg-surface-container-low px-sm py-1 rounded transition-all active:scale-95">
+<span class="material-symbols-outlined mr-xs">sync_alt</span>
+<span class="font-body-md">Trocar Usuário</span>
+</button>
+<div class="w-px h-6 bg-outline-variant"></div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="max-w-container-max mx-auto p-lg">
+<!-- Page Header -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Central do Aluno</h2>
+<p class="font-body-lg text-on-surface-variant">Gerencie seu percurso acadêmico, financeiro e comunicações institucionais.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Section: Inscrições (Wide Table) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant p-lg shadow-[0_8px_24px_rgba(1,28,64,0.04)]">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-1">Inscrições Acadêmicas</h3>
+<p class="font-caption text-on-surface-variant">Últimas solicitações de matrícula e disciplinas isoladas.</p>
+</div>
+<button class="bg-primary-container text-on-primary px-md py-2 font-label-md text-label-md flex items-center hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined mr-xs">add</span> Nova Inscrição
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="py-sm font-label-md text-on-surface-variant uppercase tracking-widest text-[11px]">Disciplina</th>
+<th class="py-sm font-label-md text-on-surface-variant uppercase tracking-widest text-[11px]">Data</th>
+<th class="py-sm font-label-md text-on-surface-variant uppercase tracking-widest text-[11px]">Tipo</th>
+<th class="py-sm font-label-md text-on-surface-variant uppercase tracking-widest text-[11px]">Estado</th>
+</tr>
+</thead>
+<tbody class="text-body-md divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md font-semibold text-primary">Arquitetura de Sistemas Distribuídos</td>
+<td class="py-md text-on-surface-variant">12 Mai 2024</td>
+<td class="py-md"><span class="text-xs px-2 py-0.5 bg-surface-container-high rounded text-secondary">Obrigatória</span></td>
+<td class="py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 bg-[#A7EBF2] text-[#023859] text-xs font-medium rounded-full">
+                                            Aprovado
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md font-semibold text-primary">Inteligência Artificial Aplicada</td>
+<td class="py-md text-on-surface-variant">10 Mai 2024</td>
+<td class="py-md"><span class="text-xs px-2 py-0.5 bg-surface-container-high rounded text-secondary">Eletiva</span></td>
+<td class="py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 bg-surface-container text-[#26658C] text-xs font-medium rounded-full">
+                                            Pendente
+                                        </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md font-semibold text-primary">Gestão de Projetos Ágeis</td>
+<td class="py-md text-on-surface-variant">05 Mai 2024</td>
+<td class="py-md"><span class="text-xs px-2 py-0.5 bg-surface-container-high rounded text-secondary">Optativa</span></td>
+<td class="py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 bg-error-container text-on-error-container text-xs font-medium rounded-full">
+                                            Rejeitado
+                                        </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section: Pagamentos (Compact) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant p-lg h-full">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-title-lg text-title-lg text-primary">Pagamentos</h3>
+<span class="material-symbols-outlined text-secondary">payments</span>
+</div>
+<div class="space-y-4">
+<!-- Payment Item 1 -->
+<div class="p-sm border border-outline-variant bg-surface">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-md text-primary">Propina - Maio 2024</p>
+<p class="text-caption text-on-surface-variant">Vencimento: 15/05/2024</p>
+</div>
+<p class="font-bold text-primary">450,00€</p>
+</div>
+<div class="flex items-center justify-between mt-4">
+<span class="text-[10px] px-2 py-0.5 bg-error-container text-on-error-container rounded uppercase font-bold">Em Atraso</span>
+<button class="text-label-md text-secondary border border-secondary px-3 py-1 hover:bg-secondary hover:text-white transition-all flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-1">upload_file</span> Comprovativo
+                                    </button>
+</div>
+</div>
+<!-- Payment Item 2 -->
+<div class="p-sm border border-outline-variant bg-surface">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-md text-primary">Taxa de Exame</p>
+<p class="text-caption text-on-surface-variant">02/05/2024</p>
+</div>
+<p class="font-bold text-primary">25,00€</p>
+</div>
+<div class="flex items-center justify-between mt-4">
+<span class="text-[10px] px-2 py-0.5 bg-[#A7EBF2] text-[#023859] rounded uppercase font-bold">Liquidado</span>
+<button class="text-label-md text-on-surface-variant border border-outline-variant px-3 py-1 hover:bg-surface-container transition-all flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-1">download</span> Recibo
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Chat / Mensagens (Full Width Bento) -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant overflow-hidden flex h-[600px]">
+<!-- Contacts List -->
+<div class="w-80 border-r border-outline-variant flex flex-col">
+<div class="p-md border-b border-outline-variant bg-surface">
+<h3 class="font-title-lg text-title-lg text-primary">Mensagens</h3>
+<p class="text-caption text-on-surface-variant">Comunicações Diretas</p>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Active Chat -->
+<div class="p-md bg-surface-container-low border-l-4 border-primary cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center text-on-primary font-bold">PH</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="font-label-md text-primary truncate">Prof. Henrique Mendes</p>
+<span class="text-[10px] text-on-surface-variant">14:20</span>
+</div>
+<p class="text-caption text-on-surface-variant truncate">O material de apoio já está...</p>
+</div>
+</div>
+</div>
+<!-- Chat 2 -->
+<div class="p-md hover:bg-surface-container transition-colors cursor-pointer border-b border-outline-variant/30">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-primary font-bold">AS</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="font-label-md text-on-surface truncate">Apoio Social</p>
+<span class="text-[10px] text-on-surface-variant">Ontem</span>
+</div>
+<p class="text-caption text-on-surface-variant truncate">Sua bolsa foi processada com sucesso.</p>
+</div>
+</div>
+</div>
+<!-- Chat 3 -->
+<div class="p-md hover:bg-surface-container transition-colors cursor-pointer border-b border-outline-variant/30">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 bg-tertiary-fixed-dim rounded-full flex items-center justify-center text-tertiary font-bold">SJ</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="font-label-md text-on-surface truncate">Sara J. (Monitora)</p>
+<span class="text-[10px] text-on-surface-variant">Segunda</span>
+</div>
+<p class="text-caption text-on-surface-variant truncate">Podes enviar o log do erro?</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Window -->
+<div class="flex-1 flex flex-col bg-surface/30">
+<!-- Chat Header -->
+<div class="px-lg py-md border-b border-outline-variant flex items-center justify-between bg-surface-container-lowest">
+<div class="flex items-center space-x-4">
+<div class="relative">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-on-primary">PH</div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-teal-500 border-2 border-white rounded-full"></div>
+</div>
+<div>
+<h4 class="font-label-md text-primary">Prof. Henrique Mendes</h4>
+<p class="text-caption text-teal-600 font-medium">Online Agora</p>
+</div>
+</div>
+<div class="flex space-x-sm">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">videocam</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all">info</button>
+</div>
+</div>
+<!-- Chat Messages -->
+<div class="flex-1 overflow-y-auto p-lg space-y-md">
+<div class="flex justify-center">
+<span class="text-[11px] px-3 py-1 bg-surface-container text-on-surface-variant rounded-full uppercase tracking-tighter">Hoje</span>
+</div>
+<!-- Received Message -->
+<div class="flex items-end space-x-2 max-w-[70%]">
+<div class="flex-1 bg-surface-container-high p-md text-body-md text-primary border border-outline-variant/20 rounded-t-xl rounded-r-xl">
+                                    Olá Ricardo, verifiquei que submeteu o trabalho de Sistemas Distribuídos. Tinha uma dúvida em relação à sua implementação de gRPC. Poderia rever a camada de serialização?
+                                    <p class="text-[10px] mt-1 text-right text-on-surface-variant">14:15</p>
+</div>
+</div>
+<!-- Sent Message -->
+<div class="flex items-end justify-end space-x-2 ml-auto max-w-[70%]">
+<div class="flex-1 bg-primary text-white p-md text-body-md rounded-t-xl rounded-l-xl">
+                                    Boa tarde, Professor. Com certeza. Vou verificar se houve algum conflito nas definições do ProtoBuf e farei o upload da correção até o final do dia. Obrigado pelo feedback!
+                                    <p class="text-[10px] mt-1 text-right text-white/70">14:20 • Lida</p>
+</div>
+</div>
+<!-- Received Message -->
+<div class="flex items-end space-x-2 max-w-[70%]">
+<div class="flex-1 bg-surface-container-high p-md text-body-md text-primary border border-outline-variant/20 rounded-t-xl rounded-r-xl">
+                                    Perfeito. O material de apoio já está disponível na aba de materiais. Bom trabalho.
+                                    <p class="text-[10px] mt-1 text-right text-on-surface-variant">14:22</p>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-md bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex items-center space-x-md bg-surface border border-outline-variant px-md py-sm rounded-lg focus-within:border-secondary transition-all">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">attach_file</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md py-1" placeholder="Escreva sua mensagem aqui..." type="text"/>
+<button class="bg-primary-container text-on-primary w-10 h-10 rounded flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) - Suppression Logic applied (only for relevant dashboards) -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-primary-container text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all z-50 group">
+<span class="material-symbols-outlined text-[28px]">help_outline</span>
+<span class="absolute right-16 bg-primary px-3 py-1 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Dúvidas? Fale Conosco</span>
+</button>
+</body></html>

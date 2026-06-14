@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Acadêmico - Gestão de Excelência</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c2c7ce",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#99d2ff",
+                    "secondary-fixed-dim": "#94cdf9",
+                    "on-surface": "#001b3f",
+                    "secondary": "#24648a",
+                    "primary-fixed": "#cde5ff",
+                    "surface-tint": "#396285",
+                    "tertiary-fixed": "#a6eeff",
+                    "primary": "#002239",
+                    "secondary-fixed": "#cae6ff",
+                    "primary-container": "#023859",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#00242b",
+                    "background": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d7e3ff",
+                    "surface-variant": "#d7e3ff",
+                    "on-primary-fixed-variant": "#1e4a6c",
+                    "tertiary-fixed-dim": "#7dd3e7",
+                    "surface-container-low": "#f1f3ff",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#cadaff",
+                    "on-secondary-fixed-variant": "#004b6f",
+                    "primary-fixed-dim": "#a2cbf3",
+                    "tertiary-container": "#003b45",
+                    "on-tertiary-container": "#51aabd",
+                    "on-surface-variant": "#42474e",
+                    "inverse-primary": "#a2cbf3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline": "#72777e",
+                    "on-background": "#001b3f",
+                    "on-tertiary-fixed-variant": "#004e5b",
+                    "on-secondary-container": "#185b82",
+                    "surface-bright": "#f9f9ff",
+                    "inverse-surface": "#193055",
+                    "surface": "#f9f9ff",
+                    "surface-container": "#e8eeff",
+                    "on-primary-fixed": "#001d32",
+                    "on-tertiary-fixed": "#001f25",
+                    "inverse-on-surface": "#ecf0ff",
+                    "on-primary-container": "#79a2c8",
+                    "surface-container-high": "#dfe8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "2.5rem",
+                    "xl": "4rem",
+                    "md": "1.5rem",
+                    "sm": "1rem",
+                    "unit": "4px",
+                    "container-max": "1280px",
+                    "xs": "0.5rem",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Source Serif 4"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Source Serif 4"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Source Serif 4"],
+                    "label-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg-mobile": ["Source Serif 4"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid #D8EAF0;
+        }
+        .academic-table th {
+            border-bottom: 1px solid #D8EAF0;
+            padding: 1rem 1.5rem;
+            text-align: left;
+        }
+        .academic-table td {
+            border-bottom: 1px solid #F1F3FF;
+            padding: 1.25rem 1.5rem;
+        }
+        .sidebar-active {
+            border-left: 3px solid #002239;
+            background: #f1f3ff;
+            color: #002239;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f9f9ff; }
+        ::-webkit-scrollbar-thumb { background: #c2c7ce; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant bg-surface flex flex-col py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Acadêmico</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Portal do Aluno</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-sm px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Painel</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm sidebar-active transition-all duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-md text-label-md">Disciplinas</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Inscrições</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Pagamentos</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Materiais</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Mensagens</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm transition-all duration-200 text-on-surface-variant hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</a>
+</nav>
+<div class="px-md pt-md border-t border-outline-variant">
+<button class="flex items-center gap-sm text-error w-full px-sm py-xs hover:bg-error-container/10 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sair</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 glass-panel border-b border-outline-variant flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-lg">
+<h2 class="font-title-lg text-title-lg font-bold text-primary">Portal de Excelência</h2>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border-none rounded-full w-64 focus:ring-1 focus:ring-primary text-body-md" placeholder="Pesquisar..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex items-center gap-md mr-md">
+<a class="text-primary font-semibold border-b-2 border-primary py-1" href="#">Início</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">Biblioteca</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors py-1" href="#">Suporte</a>
+</nav>
+<button class="text-on-surface-variant font-label-md px-4 py-2 hover:bg-surface-container-low transition-all">Trocar Usuário</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-primary-container">
+<img alt="Avatar do Usuário" class="h-full w-full object-cover" data-alt="A professional headshot of a senior academic administrator with a warm and intellectual expression. The lighting is soft and directional, typical of a studio setting, emphasizing authority and accessibility. The color palette is composed of muted blues and greys, aligning with a high-end educational brand aesthetic. The background is a slightly blurred university library setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPwKvJfYTlncMFZ9pYhIUN5-q5oKuhuS5Rqgw69OyNBkJwagaeZjS71oVXz_1fbqjePIrN1GWaL072gXlLwr56GCpsYoXi-ayFrrX_AnGcTOUb92QAXEATKN5qNtfE_UcSQT4xXP5GOUgPXy9nsi6sYxeJG9-5tETIJDu1CGUzzhDOm0ntZkimWqYI0u0SvCX3pbFrStzS_X3cFQcvI7Ko8sh3qdkpT-RfV57JRS3Zdj0X8OD-dW6DONc6Ioad1UppxSNGHEqkCsVa"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="mt-16 p-lg flex-1">
+<!-- Page Header Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary">Gestão de Disciplinas</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mt-2">Administre o catálogo acadêmico, atribua explicadores especializados e organize os conteúdos programáticos com rigor técnico.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-2 border border-primary text-primary hover:bg-primary-container/5 transition-all font-label-md">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filtrar
+                    </button>
+<button class="flex items-center gap-xs px-md py-2 bg-primary-container text-on-primary hover:opacity-90 transition-all font-label-md">
+<span class="material-symbols-outlined text-sm">add</span> Nova Disciplina
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats (Bento-lite) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-white p-md border border-outline-variant">
+<p class="text-on-surface-variant font-label-md uppercase tracking-wider mb-xs">Disciplinas Ativas</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">42</h3>
+<div class="flex items-center gap-1 text-green-700 font-label-md mt-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +3 este mês
+                    </div>
+</div>
+<div class="bg-white p-md border border-outline-variant">
+<p class="text-on-surface-variant font-label-md uppercase tracking-wider mb-xs">Total Estudantes</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">1.284</h3>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md mt-sm">
+                        Média 30.5 por turma
+                    </div>
+</div>
+<div class="bg-white p-md border border-outline-variant">
+<p class="text-on-surface-variant font-label-md uppercase tracking-wider mb-xs">Aulas Ministradas</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">856</h3>
+<div class="flex items-center gap-1 text-secondary font-label-md mt-sm">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span> Ver cronograma
+                    </div>
+</div>
+<div class="bg-white p-md border border-outline-variant">
+<p class="text-on-surface-variant font-label-md uppercase tracking-wider mb-xs">Taxa de Conclusão</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">94%</h3>
+<div class="flex items-center gap-1 text-secondary font-label-md mt-sm">
+                        Meta institucional: 92%
+                    </div>
+</div>
+</div>
+<!-- Main Enterprise Table Container -->
+<div class="bg-white border border-outline-variant overflow-hidden">
+<!-- Table Controls -->
+<div class="p-md flex items-center justify-between border-b border-outline-variant bg-surface-container-low">
+<div class="flex items-center gap-md">
+<label class="flex items-center gap-xs cursor-pointer">
+<input class="rounded-sm border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-label-md text-on-surface-variant">Selecionar Todos</span>
+</label>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex gap-xs">
+<button class="p-1 hover:bg-surface-container text-on-surface-variant transition-colors" title="Exportar">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant transition-colors" title="Arquivar">
+<span class="material-symbols-outlined">archive</span>
+</button>
+<button class="p-1 hover:bg-error-container/20 text-error transition-colors" title="Excluir">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<span class="text-label-md text-on-surface-variant">1-10 de 42 disciplinas</span>
+<div class="flex gap-1">
+<button class="p-1 border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Academic Table -->
+<div class="overflow-x-auto">
+<table class="w-full academic-table border-collapse">
+<thead class="bg-surface-bright">
+<tr>
+<th class="w-12"></th>
+<th class="font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Identificador</th>
+<th class="font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Disciplina &amp; Categoria</th>
+<th class="font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Explicadores Responsáveis</th>
+<th class="font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Inscritos</th>
+<th class="font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Status</th>
+<th class="font-label-md text-on-surface-variant uppercase tracking-widest text-[10px]">Ações</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td><input class="rounded-sm border-outline text-primary focus:ring-primary ml-4" type="checkbox"/></td>
+<td class="font-mono text-secondary">#DIR-2024-001</td>
+<td>
+<div class="flex flex-col">
+<span class="font-bold text-primary">Direito Constitucional I</span>
+<span class="text-caption text-on-surface-variant">Ciências Jurídicas • Semestre 1</span>
+</div>
+</td>
+<td>
+<div class="flex -space-x-2">
+<div class="h-8 w-8 rounded-full border-2 border-white overflow-hidden" title="Prof. Dr. Ricardo Silva">
+<img alt="Foto Professor" class="h-full w-full object-cover" data-alt="A portrait of a middle-aged university professor with grey hair and glasses, wearing a sharp navy blue suit. He has an expression of focused academic integrity. The lighting is sophisticated, with a gentle key light creating depth against a soft, out-of-focus bookshelf background. The overall aesthetic is one of prestige and high-level intellectual authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlrRQjhTx8cJB3jIZWxgwVCPxw-9DvEaeTIEWnWkFU_7jTSWYngozL2XCiGYiHETofdrtcYVDSmfuZWuhWQqiZ9jmzJXh5wHjelEPVP1MLgDgyDKzB6g6CX_1DEyr5CNn-qVfMJPlLNpHiWmTjEoNjz6do9W7m-fSiP7xh4b9UcynoMfh43Cx0sQFB0YBJMWj8_l93gNu8_GRQPfCBdAPKzIb6SQnPBeDpwvTY8xSgNN8mvuefOpiwP85zX63cnCkhrE3E6wSS5JEu"/>
+</div>
+<div class="h-8 w-8 rounded-full border-2 border-white bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">
+                                            +2
+                                        </div>
+</div>
+</td>
+<td>
+<div class="flex items-center gap-xs">
+<span class="font-semibold">124</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 82%;"></div>
+</div>
+</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#A7EBF2] text-[#023859] text-[10px] font-bold uppercase">Publicado</span>
+</td>
+<td>
+<button class="text-on-surface-variant hover:text-primary p-1"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-on-surface-variant hover:text-primary p-1"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td><input class="rounded-sm border-outline text-primary focus:ring-primary ml-4" type="checkbox"/></td>
+<td class="font-mono text-secondary">#MAT-2024-042</td>
+<td>
+<div class="flex flex-col">
+<span class="font-bold text-primary">Cálculo Diferencial Integrado</span>
+<span class="text-caption text-on-surface-variant">Engenharia • Semestre 2</span>
+</div>
+</td>
+<td>
+<div class="flex -space-x-2">
+<div class="h-8 w-8 rounded-full border-2 border-white overflow-hidden" title="Profa. Helena Torres">
+<img alt="Foto Professor" class="h-full w-full object-cover" data-alt="A portrait of a confident female university lecturer in her late 30s. She is dressed in professional business attire, specifically a charcoal blazer. Her expression is welcoming but intellectually rigorous. The lighting is bright and clean, characteristic of a high-end educational environment. The background is a minimalist, modern office space with subtle architectural details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK3iIuwrfir5eJ2laRQ3aVU08cYe2CyjvGNNgWqkt1TdAkPp8s03KlzCoxjJ0I7xCpVc4Xf32L2ugp6TlTct8Npl5ANMBfNpzwtbmZ6YHIK2u08HT5vKOMpqMnZ-lW_gyivSwvJ89BPCi2QTZS6w9VRNXOECXCdL0y8kVn_DCLj4GbwmjSVBh5yBXGqloJLauDRL4Rq25zuUPBl_7Swjo4dF-oCW6oHHH_GeopaRQokmtQTYIMWBvdUQxNUP7vxHuo2qMSWQdLo2xz"/>
+</div>
+</div>
+</td>
+<td>
+<div class="flex items-center gap-xs">
+<span class="font-semibold">89</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 45%;"></div>
+</div>
+</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-highest text-on-secondary-fixed-variant text-[10px] font-bold uppercase">Em Revisão</span>
+</td>
+<td>
+<button class="text-on-surface-variant hover:text-primary p-1"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-on-surface-variant hover:text-primary p-1"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td><input class="rounded-sm border-outline text-primary focus:ring-primary ml-4" type="checkbox"/></td>
+<td class="font-mono text-secondary">#MED-2024-015</td>
+<td>
+<div class="flex flex-col">
+<span class="font-bold text-primary">Anatomia Humana Avançada</span>
+<span class="text-caption text-on-surface-variant">Medicina • Semestre 1</span>
+</div>
+</td>
+<td>
+<div class="flex -space-x-2">
+<div class="h-8 w-8 rounded-full border-2 border-white overflow-hidden" title="Dr. Marcus Vinicius">
+<img alt="Foto Professor" class="h-full w-full object-cover" data-alt="A professional portrait of a medical professor in a clean white coat. He has an expression of calm expertise. The lighting is high-key and crisp, reflecting a sterile but sophisticated clinical academic setting. The background is a soft-focus medical laboratory with hint of high-tech equipment. The color palette emphasizes whites, clinical blues, and professional greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf3CA47he8EMQ48vbPrLWxjs7RJEfcUcpc6F9ZvX3oreQp1hHfnw93TqA7GZbmUdALmK-Iscg-QzqGJxtqJQuUmg6H9pGtwDeMF24QfKH0fA1NmIXk8Dj6_c_FycskTLfsqUTAxvHcwS4gxLRo6wDBWot6K3Ba6ZI1odlsQfYSaBsFK1K1yy1rvOeF9xsymLygygS-OaRxq4Q3UWjbAIH6kYZmYBzOFf_uB2-E1K4TmyEmMOIQ91Aa_DAvy1OI03aHZ9qh1ogsf8ae"/>
+</div>
+<div class="h-8 w-8 rounded-full border-2 border-white overflow-hidden" title="Dra. Ana Costa">
+<img alt="Foto Professor" class="h-full w-full object-cover" data-alt="A professional headshot of a female doctor and university researcher. She has a dedicated and sharp look. Dressed in a modern white lab coat over a professional navy blouse. The image has a clean, airy feel with soft-box lighting that minimizes shadows. The background is a blurred university hospital atrium with bright, natural light streaming through glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-CRDTqJRkuGmpF-JIXAL-Krq_tyzmQSkH77hTnqILhBXpaXSxyxPrcK5AruDjxIwSf8Rqgn-MWGlfzoWuWQgJVB6jEkxB0ZJzlI1Vm9uHoBmHvnpd9x55PEsyzQWFv9RbB8Q3uyElzIFp9uxW0gvUAkHl792knxvzIoJ5qhaPnANRchqy_ZH28msr9-8n_9LMLoO5kpuTx8B8-54owH3xb3TXNq1__Tsq1gr_MOxlieLUHT_pDKRmU7TQGI3sjEgeyU4usfzz9w2D"/>
+</div>
+</div>
+</td>
+<td>
+<div class="flex items-center gap-xs">
+<span class="font-semibold">210</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 95%;"></div>
+</div>
+</div>
+</td>
+<td>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-[#A7EBF2] text-[#023859] text-[10px] font-bold uppercase">Publicado</span>
+</td>
+<td>
+<button class="text-on-surface-variant hover:text-primary p-1"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-on-surface-variant hover:text-primary p-1"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Asymmetric Layout: Content Creation & Quick Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-xl">
+<!-- Quick Creation Card -->
+<div class="lg:col-span-2 glass-panel p-lg">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-md">
+<span class="material-symbols-outlined text-primary">add_circle</span>
+<h3 class="font-title-lg text-title-lg text-primary">Criação Rápida de Conteúdo</h3>
+</div>
+<form class="space-y-md">
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-semibold text-on-surface-variant">Nome da Disciplina</label>
+<input class="bg-surface-container-lowest border-outline-variant focus:ring-secondary rounded-lg" placeholder="Ex: Microeconomia Aplicada" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-semibold text-on-surface-variant">Faculdade</label>
+<select class="bg-surface-container-lowest border-outline-variant focus:ring-secondary rounded-lg">
+<option>Ciências Sociais</option>
+<option>Exatas e Tecnologia</option>
+<option>Humanidades</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-md font-semibold text-on-surface-variant">Atribuir Explicadores</label>
+<div class="flex flex-wrap gap-sm">
+<button class="flex items-center gap-xs px-3 py-1 bg-surface-container border border-outline-variant rounded-full text-label-md hover:bg-surface-variant transition-all" type="button">
+<img alt="Mini Avatar" class="h-4 w-4 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoLEFVKA1AHoFMqg-LFwdxZp58SaoldRV3JawO4GvSVs0o2iOfbSPaTRHldsfxoFyHJxtTgiegMc4joz0RRfCBHdvbPZ1RlB3wAA_F2wA5sTFp5UsSRr5E7bVqNRfeKXxyPqsf4Nh9FAmVUPjbXNHetvYA2lA-bGcUPHbOTZ19-1nT1FZMcbwkYH84KEYI23zhl63ClKod5zfDM6DgyeX4VxVv2669Ze-f3RgCiRAWhIlUeuQ-gFNvKiNBlAuFH0_hZRAYzgZpssrP"/> Dr. Ricardo Silva <span class="material-symbols-outlined text-xs">close</span>
+</button>
+<button class="flex items-center gap-xs px-3 py-1 border border-dashed border-outline-variant rounded-full text-label-md text-on-surface-variant hover:border-primary hover:text-primary transition-all" type="button">
+<span class="material-symbols-outlined text-xs">person_add</span> Adicionar mais
+                                </button>
+</div>
+</div>
+<div class="flex justify-end pt-md">
+<button class="bg-primary-container text-on-primary px-xl py-2 font-label-md hover:shadow-lg transition-all">Salvar Disciplina</button>
+</div>
+</form>
+</div>
+<!-- Recent Activity Feed -->
+<div class="bg-white border border-outline-variant p-lg">
+<h3 class="font-title-lg text-title-lg text-primary mb-md">Atividade Recente</h3>
+<div class="space-y-lg relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-outline-variant">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 h-6 w-6 rounded-full bg-[#A7EBF2] border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-[#023859]">check</span>
+</div>
+<p class="text-label-md font-bold text-on-surface">Conteúdo Aprovado</p>
+<p class="text-caption text-on-surface-variant">"Módulo 3: Jurisprudência" foi publicado por Dr. Ricardo.</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1 uppercase tracking-tighter">Há 15 minutos</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 h-6 w-6 rounded-full bg-primary-container border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-white">person_add</span>
+</div>
+<p class="text-label-md font-bold text-on-surface">Nova Inscrição</p>
+<p class="text-caption text-on-surface-variant">Carla Mendes se inscreveu em Anatomia Humana.</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1 uppercase tracking-tighter">Há 2 horas</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 h-6 w-6 rounded-full bg-surface-container-highest border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-on-primary-fixed-variant">edit_note</span>
+</div>
+<p class="text-label-md font-bold text-on-surface">Revisão Necessária</p>
+<p class="text-caption text-on-surface-variant">Cálculo Diferencial pendente de verificação de ementa.</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1 uppercase tracking-tighter">Há 5 horas</p>
+</div>
+</div>
+<button class="w-full mt-lg text-secondary font-label-md hover:underline transition-all">Ver log de auditoria completo</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Suppressed on Management Screens according to logic, but included here for completeness of potential dashboard state) -->
+<!-- <button class="fixed bottom-lg right-lg h-14 w-14 bg-primary-container text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-105 transition-transform z-50">
+        <span class="material-symbols-outlined">support_agent</span>
+    </button> -->
+<script>
+        // Micro-interactions for table rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.querySelector('input[type="checkbox"]')?.classList.add('scale-110');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.querySelector('input[type="checkbox"]')?.classList.remove('scale-110');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Acadêmico | Painel de Monitorização do Coordenador</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c2c7ce",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#99d2ff",
+                    "secondary-fixed-dim": "#94cdf9",
+                    "on-surface": "#001b3f",
+                    "secondary": "#24648a",
+                    "primary-fixed": "#cde5ff",
+                    "surface-tint": "#396285",
+                    "tertiary-fixed": "#a6eeff",
+                    "primary": "#002239",
+                    "secondary-fixed": "#cae6ff",
+                    "primary-container": "#023859",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#00242b",
+                    "background": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d7e3ff",
+                    "surface-variant": "#d7e3ff",
+                    "on-primary-fixed-variant": "#1e4a6c",
+                    "tertiary-fixed-dim": "#7dd3e7",
+                    "surface-container-low": "#f1f3ff",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#cadaff",
+                    "on-secondary-fixed-variant": "#004b6f",
+                    "primary-fixed-dim": "#a2cbf3",
+                    "tertiary-container": "#003b45",
+                    "on-tertiary-container": "#51aabd",
+                    "on-surface-variant": "#42474e",
+                    "inverse-primary": "#a2cbf3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline": "#72777e",
+                    "on-background": "#001b3f",
+                    "on-tertiary-fixed-variant": "#004e5b",
+                    "on-secondary-container": "#185b82",
+                    "surface-bright": "#f9f9ff",
+                    "inverse-surface": "#193055",
+                    "surface": "#f9f9ff",
+                    "surface-container": "#e8eeff",
+                    "on-primary-fixed": "#001d32",
+                    "on-tertiary-fixed": "#001f25",
+                    "inverse-on-surface": "#ecf0ff",
+                    "on-primary-container": "#79a2c8",
+                    "surface-container-high": "#dfe8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "2.5rem",
+                    "xl": "4rem",
+                    "md": "1.5rem",
+                    "sm": "1rem",
+                    "unit": "4px",
+                    "container-max": "1280px",
+                    "xs": "0.5rem",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Source Serif 4"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Source Serif 4"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Source Serif 4"],
+                    "label-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg-mobile": ["Source Serif 4"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid #D8EAF0;
+        }
+        .chart-bar {
+            transition: height 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- Sidebar (Shared Component Anchor) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col h-full py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Acadêmico</h1>
+<p class="text-on-surface-variant font-label-md text-label-md">Portal do Aluno</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active Tab: Painel -->
+<a class="flex items-center gap-sm px-md py-sm text-primary border-l-[3px] border-primary bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Painel</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-md text-label-md">Disciplinas</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Inscrições</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Pagamentos</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Materiais</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md text-label-md">Mensagens</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-md border-t border-outline-variant">
+<div class="flex items-center gap-sm p-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+<img alt="Avatar do Usuário" class="w-full h-full object-cover" data-alt="A professional portrait of a university coordinator in a formal navy blue suit. The background is a blurred high-end academic office with books and certificates, conveying authority and intellectual prestige. The lighting is soft and flattering, emphasizing a modern yet classic institution aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1PiCn_T2K1BG1O-0nHr1dyUvs-L-UGYorPqsPJ_AMmpoMgAq0kBg439cgGVIgchzqsj6HoL1rwUVMgbJDfrYOrOplMTzHYIvBYIFVRPUH3cr35HbkdnD-zztg_i3wtdH_38Zp440PRLsaaw8txB92May5n29ZkptcdQXfaKSedRoDEVPJOFx0hUK7G_UuuS8PBrXTJtTFxdY9L4reBTeMb97RTgkz1PsZxH_JeJDbTi40KRIhdXLLhagnAOASpppWIIWF1No4fCRs"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Dr. Ricardo Silva</p>
+<p class="text-caption text-on-surface-variant">Coordenador Geral</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar (Shared Component Anchor) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/85 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-md">
+<h2 class="font-title-lg text-title-lg font-bold text-primary">Portal de Excelência</h2>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border-none rounded-lg text-body-md focus:ring-1 focus:ring-secondary w-64" placeholder="Procurar relatórios..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<nav class="hidden md:flex gap-md">
+<a class="text-primary font-semibold border-b-2 border-primary py-4" href="#">Início</a>
+<a class="text-on-surface-variant hover:text-primary transition-all py-4" href="#">Biblioteca</a>
+<a class="text-on-surface-variant hover:text-primary transition-all py-4" href="#">Suporte</a>
+</nav>
+<button class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-low transition-all px-sm py-1.5 rounded scale-98 active:scale-95">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="font-label-md text-label-md">Trocar Usuário</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-lg">
+<div class="max-w-container-max mx-auto space-y-lg">
+<!-- Header & Key Growth Indicator -->
+<section class="flex flex-col md:flex-row justify-between items-end gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Monitorização Académica</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Visualização analítica do desempenho pedagógico e taxas de adesão institucional para o período letivo 2024.1.</p>
+</div>
+<div class="bg-secondary-container/30 px-lg py-md rounded-xl border border-secondary/20">
+<span class="text-label-md font-bold text-secondary uppercase tracking-wider block mb-1">Crescimento Global</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-display-lg font-display-lg text-primary">+12.4%</span>
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+</div>
+</div>
+</section>
+<!-- Key Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="glass-card p-md rounded-xl flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="bg-primary/5 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<span class="text-caption font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">Ativo</span>
+</div>
+<h3 class="font-label-md text-on-surface-variant">Novas Inscrições</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">2,482</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant/30 flex items-center gap-xs">
+<span class="text-secondary font-bold">+8%</span>
+<span class="text-caption text-on-surface-variant">vs. último mês</span>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="bg-secondary/5 p-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary">auto_stories</span>
+</div>
+<span class="text-caption font-bold text-secondary bg-secondary-container/50 px-2 py-0.5 rounded">Em Revisão</span>
+</div>
+<h3 class="font-label-md text-on-surface-variant">Cursos Monitorados</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">48</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant/30 flex items-center gap-xs">
+<span class="text-on-surface-variant font-bold">100%</span>
+<span class="text-caption text-on-surface-variant">cobertura total</span>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="bg-tertiary-container/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-container">group</span>
+</div>
+</div>
+<h3 class="font-label-md text-on-surface-variant">Corpo Docente</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">156</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant/30 flex items-center gap-xs">
+<span class="text-secondary font-bold">98.2%</span>
+<span class="text-caption text-on-surface-variant">taxa de retenção</span>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col justify-between group hover:shadow-lg transition-all duration-300">
+<div>
+<div class="flex justify-between items-start mb-md">
+<div class="bg-error-container/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-error">assignment_late</span>
+</div>
+</div>
+<h3 class="font-label-md text-on-surface-variant">Pendências Académicas</h3>
+<p class="font-headline-md text-headline-md text-primary mt-1">14</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant/30 flex items-center gap-xs">
+<span class="text-error font-bold">-4%</span>
+<span class="text-caption text-on-surface-variant">redução mensal</span>
+</div>
+</div>
+</div>
+<!-- Detailed Analysis Section -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter">
+<!-- Enrollment Growth Chart (Bento Large) -->
+<div class="xl:col-span-2 glass-card p-lg rounded-xl flex flex-col h-full relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+<div class="flex justify-between items-center mb-xl relative">
+<div>
+<h3 class="font-title-lg text-title-lg text-primary">Inscrições por Área de Estudo</h3>
+<p class="text-caption text-on-surface-variant">Distribuição quantitativa do semestre corrente</p>
+</div>
+<div class="flex gap-xs">
+<button class="px-3 py-1 bg-surface-container text-label-md rounded border border-outline-variant">Semanal</button>
+<button class="px-3 py-1 bg-primary text-on-primary text-label-md rounded shadow-md">Mensal</button>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-between gap-md relative min-h-[300px]">
+<!-- Simple Pure CSS Bar Chart -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-full">
+<div class="absolute bottom-0 w-full bg-primary-container rounded-t-lg chart-bar group-hover:brightness-125" style="height: 85%;">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-caption font-bold opacity-0 group-hover:opacity-100 transition-opacity">850</span>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant text-center leading-tight">Engenharia</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full bg-secondary-container/20 rounded-t-lg relative group h-full">
+<div class="absolute bottom-0 w-full bg-secondary-container rounded-t-lg chart-bar group-hover:brightness-125" style="height: 65%;">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-caption font-bold opacity-0 group-hover:opacity-100 transition-opacity">650</span>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant text-center leading-tight">Biomedicina</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-full">
+<div class="absolute bottom-0 w-full bg-primary-container rounded-t-lg chart-bar group-hover:brightness-125" style="height: 95%;">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-caption font-bold opacity-0 group-hover:opacity-100 transition-opacity">950</span>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant text-center leading-tight">Direito</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full bg-secondary-container/20 rounded-t-lg relative group h-full">
+<div class="absolute bottom-0 w-full bg-secondary-container rounded-t-lg chart-bar group-hover:brightness-125" style="height: 45%;">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-caption font-bold opacity-0 group-hover:opacity-100 transition-opacity">450</span>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant text-center leading-tight">Artes</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group h-full">
+<div class="absolute bottom-0 w-full bg-primary-container rounded-t-lg chart-bar group-hover:brightness-125" style="height: 72%;">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-caption font-bold opacity-0 group-hover:opacity-100 transition-opacity">720</span>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant text-center leading-tight">Gestão</span>
+</div>
+</div>
+</div>
+<!-- Academic Integrity Status -->
+<div class="glass-card p-lg rounded-xl flex flex-col">
+<h3 class="font-title-lg text-title-lg text-primary mb-md">Índice de Qualidade</h3>
+<div class="space-y-lg flex-1">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-label-md text-on-surface-variant">Taxa de Aprovação</span>
+<span class="text-label-md font-bold text-primary">94.2%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 94.2%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-label-md text-on-surface-variant">Satisfação Discente</span>
+<span class="text-label-md font-bold text-primary">4.8/5.0</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-label-md text-on-surface-variant">Aderência ao Currículo</span>
+<span class="text-label-md font-bold text-primary">89%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 89%;"></div>
+</div>
+</div>
+<!-- Visual Highlight Card -->
+<div class="mt-auto bg-primary-container p-md rounded-xl text-on-primary relative overflow-hidden">
+
+<div class="relative z-10">
+<p class="text-caption opacity-80 uppercase tracking-widest mb-1">Destaque do Mês</p>
+<p class="font-headline-md text-headline-md leading-tight">Faculdade de Direito</p>
+<p class="text-caption mt-2">Maior crescimento orgânico em inscrições (+18.4%) desde a abertura do portal.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Operational Monitoring Table -->
+<section class="glass-card rounded-xl overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<div>
+<h3 class="font-title-lg text-title-lg text-primary">Status das Disciplinas Ativas</h3>
+<p class="text-caption text-on-surface-variant">Monitoramento de engajamento e cumprimento de prazos pedagógicos</p>
+</div>
+<div class="flex gap-sm">
+<button class="p-2 hover:bg-surface-container rounded-lg transition-colors border border-outline-variant">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="px-md py-2 bg-primary text-on-primary text-label-md rounded flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Relatório Completo
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Cód / Disciplina</th>
+<th class="px-lg py-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Docente Responsável</th>
+<th class="px-lg py-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold text-center">Matriculados</th>
+<th class="px-lg py-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Status Pedagógico</th>
+<th class="px-lg py-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Crescimento</th>
+<th class="px-lg py-md"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-primary">LAW-102</span>
+<span class="text-caption text-on-surface-variant">Direito Civil Aplicado</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold text-xs">MA</div>
+<span class="text-body-md">Dr. Marcos André</span>
+</div>
+</td>
+<td class="px-lg py-md text-center">
+<span class="text-body-md">142</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#A7EBF2] text-[#023859]">
+                                        Publicado
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<span class="text-secondary font-bold">+12%</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-primary">ENG-405</span>
+<span class="text-caption text-on-surface-variant">Estruturas Dinâmicas II</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant font-bold text-xs">LA</div>
+<span class="text-body-md">Dra. Lúcia Alencar</span>
+</div>
+</td>
+<td class="px-lg py-md text-center">
+<span class="text-body-md">88</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-surface-container text-on-surface-variant">
+                                        Em Revisão
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<span class="text-on-surface-variant font-bold">+2.4%</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-primary">MED-201</span>
+<span class="text-caption text-on-surface-variant">Anatomia Clínica</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold text-xs">RT</div>
+<span class="text-body-md">Dr. Roberto Torres</span>
+</div>
+</td>
+<td class="px-lg py-md text-center">
+<span class="text-body-md">210</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#A7EBF2] text-[#023859]">
+                                        Publicado
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<span class="text-secondary font-bold">+15%</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Restricted to Coordinator) -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-primary-container text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 group z-50">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform">add</span>
+<span class="absolute right-16 bg-primary text-on-primary px-3 py-1.5 rounded-lg text-caption font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">Nova Resolução</span>
+</button>
+<script>
+        // Micro-interaction for bar chart animation on load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 100);
+            });
+        });
+
+        // Simple smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>
